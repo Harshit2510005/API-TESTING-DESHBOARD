@@ -1,0 +1,12 @@
+const mongoose = require('mongoose');
+
+const historySchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    method: String,
+    url: String,
+    status: Number,
+    time: String,
+    createdAt: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model('History', historySchema);
