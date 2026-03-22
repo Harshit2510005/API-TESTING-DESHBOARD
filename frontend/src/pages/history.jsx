@@ -65,10 +65,10 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 p-8 overflow-y-auto h-screen">
-        <header className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-semibold">API Performance Monitor</h1>
-          <button onClick={() => { localStorage.clear(); window.location.href='/'; }} className="bg-red-500/10 text-red-400 px-4 py-2 rounded-lg border border-red-500/30 hover:bg-red-500 hover:text-white transition">Logout</button>
+      <div className="flex-1 p-4 md:p-8 overflow-y-auto h-screen pb-24 md:pb-8">
+        <header className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6 md:mb-8 mt-2 md:mt-0">
+          <h1 className="text-2xl md:text-3xl font-semibold">API Performance Monitor</h1>
+          <button onClick={() => { localStorage.clear(); window.location.href='/'; }} className="bg-red-500/10 text-red-400 px-4 py-2 rounded-lg border border-red-500/30 hover:bg-red-500 hover:text-white transition self-start sm:self-auto text-sm md:text-base">Logout</button>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -76,13 +76,15 @@ const Dashboard = () => {
             {/* API Tester Card */}
             <div className="bg-[#1e293b] p-6 rounded-2xl shadow-xl border border-gray-700">
               <h3 className="text-xl mb-4 text-gray-300">Test Your API</h3>
-              <div className="flex gap-2">
-                <select value={method} onChange={(e) => setMethod(e.target.value)} className="bg-slate-800 border border-gray-600 rounded-lg px-3 outline-none">
-                  <option>GET</option>
-                  <option>POST</option>
-                </select>
-                <input type="text" placeholder="https://api.example.com" className="flex-1 bg-slate-800 border border-gray-600 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-sky-500" value={url} onChange={(e) => setUrl(e.target.value)} />
-                <button onClick={handleRunTest} disabled={loading} className="bg-sky-500 hover:bg-sky-600 px-6 py-2 rounded-lg font-bold transition">
+              <div className="flex flex-col lg:flex-row gap-3">
+                <div className="flex gap-2 flex-1 w-full">
+                  <select value={method} onChange={(e) => setMethod(e.target.value)} className="bg-slate-800 border border-gray-600 rounded-lg px-2 sm:px-3 py-2 outline-none shrink-0">
+                    <option>GET</option>
+                    <option>POST</option>
+                  </select>
+                  <input type="text" placeholder="https://api.example.com" className="flex-1 w-full bg-slate-800 border border-gray-600 rounded-lg px-3 sm:px-4 py-2 outline-none focus:ring-2 focus:ring-sky-500 min-w-0" value={url} onChange={(e) => setUrl(e.target.value)} />
+                </div>
+                <button onClick={handleRunTest} disabled={loading} className="bg-sky-500 hover:bg-sky-600 px-6 py-2 rounded-lg font-bold transition w-full lg:w-auto shadow-lg shadow-sky-500/20">
                   {loading ? '...' : 'RUN'}
                 </button>
               </div>
@@ -128,6 +130,22 @@ const Dashboard = () => {
               <p className="text-gray-500 text-xs mt-1">System is healthy. All services running.</p>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Mobile Bottom Navigation */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-[#1e293b] border-t border-gray-700 flex justify-around p-3 z-50 shadow-[0_-5px_15px_rgba(0,0,0,0.3)]">
+        <div className="flex flex-col items-center gap-1 w-1/3 text-sky-400 cursor-pointer">
+          <span className="text-xl">📊</span>
+          <span className="text-[10px] sm:text-xs font-bold">Dashboard</span>
+        </div>
+        <div className="flex flex-col items-center gap-1 w-1/3 text-gray-400 cursor-pointer">
+          <span className="text-xl">📜</span>
+          <span className="text-[10px] sm:text-xs font-bold">History</span>
+        </div>
+        <div className="flex flex-col items-center gap-1 w-1/3 text-gray-400 cursor-pointer">
+          <span className="text-xl">⚙️</span>
+          <span className="text-[10px] sm:text-xs font-bold">Settings</span>
         </div>
       </div>
     </div>

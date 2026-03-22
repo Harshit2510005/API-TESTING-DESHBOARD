@@ -140,12 +140,12 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 p-8 overflow-y-auto">
-        <header className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-semibold capitalize">
+      <div className="flex-1 p-4 md:p-8 overflow-y-auto pb-24 md:pb-8">
+        <header className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 mb-6 md:mb-8 mt-2 md:mt-0">
+          <h1 className="text-2xl md:text-3xl font-semibold capitalize truncate max-w-full">
             {activeTab === 'dashboard' ? projectSettings.name : activeTab}
           </h1>
-          <button onClick={() => { localStorage.clear(); window.location.href='/'; }} className="bg-red-500/10 text-red-400 px-4 py-2 rounded-lg border border-red-500/30 hover:bg-red-500 transition shadow-lg">Logout</button>
+          <button onClick={() => { localStorage.clear(); window.location.href='/'; }} className="bg-red-500/10 text-red-400 px-4 py-2 rounded-lg border border-red-500/30 hover:bg-red-500 transition shadow-lg self-start sm:self-auto text-sm md:text-base">Logout</button>
         </header>
 
         {/* --- DASHBOARD TAB --- */}
@@ -154,10 +154,12 @@ const Dashboard = () => {
             <div className="lg:col-span-2 space-y-6">
               <div className="bg-[#1e293b] p-6 rounded-2xl shadow-xl border border-gray-700">
                 <h3 className="text-xl mb-4 text-gray-300 font-medium">Test Your API</h3>
-                <div className="flex gap-2">
-                  <select value={method} onChange={(e) => setMethod(e.target.value)} className="bg-slate-800 border border-gray-600 rounded-lg px-3 outline-none"><option>GET</option><option>POST</option></select>
-                  <input type="text" className="flex-1 bg-slate-800 border border-gray-600 rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-sky-500" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://api.example.com/data" />
-                  <button onClick={handleRunTest} disabled={loading} className="bg-sky-500 hover:bg-sky-600 px-6 py-2 rounded-lg font-bold transition shadow-lg shadow-sky-500/20">{loading ? '...' : 'RUN'}</button>
+                <div className="flex flex-col lg:flex-row gap-3">
+                  <div className="flex gap-2 flex-1 w-full">
+                    <select value={method} onChange={(e) => setMethod(e.target.value)} className="bg-slate-800 border border-gray-600 rounded-lg px-2 sm:px-3 py-2 outline-none shrink-0"><option>GET</option><option>POST</option><option>PUT</option><option>DELETE</option></select>
+                    <input type="text" className="flex-1 w-full bg-slate-800 border border-gray-600 rounded-lg px-3 sm:px-4 py-2 outline-none focus:ring-2 focus:ring-sky-500 min-w-0" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="https://api.example.com/data" />
+                  </div>
+                  <button onClick={handleRunTest} disabled={loading} className="bg-sky-500 hover:bg-sky-600 px-6 py-2 rounded-lg font-bold transition shadow-lg shadow-sky-500/20 w-full lg:w-auto">{loading ? '...' : 'RUN'}</button>
                 </div>
                 <div className="mt-6 bg-black/60 p-5 rounded-xl text-green-400 h-64 overflow-auto border border-gray-800 font-mono">
                   <pre>{response ? JSON.stringify(response, null, 2) : "// Result output..."}</pre>
@@ -247,6 +249,22 @@ const Dashboard = () => {
             </div>
           </div>
         )}
+      </div>
+
+      {/* Mobile Bottom Navigation */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-[#1e293b] border-t border-gray-700 flex justify-around p-3 z-50 shadow-[0_-5px_15px_rgba(0,0,0,0.3)]">
+        <button onClick={() => setActiveTab('dashboard')} className={`flex flex-col items-center gap-1 w-1/3 ${activeTab === 'dashboard' ? 'text-sky-400' : 'text-gray-400'}`}>
+          <span className="text-xl">📊</span>
+          <span className="text-[10px] sm:text-xs font-bold">Dashboard</span>
+        </button>
+        <button onClick={() => setActiveTab('history')} className={`flex flex-col items-center gap-1 w-1/3 ${activeTab === 'history' ? 'text-sky-400' : 'text-gray-400'}`}>
+          <span className="text-xl">📜</span>
+          <span className="text-[10px] sm:text-xs font-bold">History</span>
+        </button>
+        <button onClick={() => setActiveTab('settings')} className={`flex flex-col items-center gap-1 w-1/3 ${activeTab === 'settings' ? 'text-sky-400' : 'text-gray-400'}`}>
+          <span className="text-xl">⚙️</span>
+          <span className="text-[10px] sm:text-xs font-bold">Settings</span>
+        </button>
       </div>
     </div>
   );

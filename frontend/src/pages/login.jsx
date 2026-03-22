@@ -74,15 +74,15 @@ const Login = ({ setToken }) => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0f172a] via-[#1a1f3a] to-[#0f172a] font-sans relative overflow-hidden">
+        <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-[#0f172a] via-[#1a1f3a] to-[#0f172a] font-sans relative overflow-hidden">
             {/* Background Animation */}
             <div className="absolute inset-0">
                 <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
                 <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
             </div>
 
-            <div className="relative z-10 bg-[#1e293b] p-8 rounded-2xl border border-slate-700 shadow-2xl w-full max-w-md text-white">
-                <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00d4ff] to-[#0084d4] mb-2 text-center">Welcome Back</h2>
+            <div className="relative z-10 bg-[#1e293b] p-6 sm:p-8 rounded-2xl border border-slate-700 shadow-2xl w-full max-w-md text-white">
+                <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00d4ff] to-[#0084d4] mb-2 text-center">Welcome Back</h2>
                 <p className="text-center text-slate-400 mb-8 text-sm">API Testing Dashboard</p>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -140,11 +140,10 @@ const Login = ({ setToken }) => {
                                 }}></div>
                                 
                                 {/* CAPTCHA Text with Styling */}
-                                <div className="font-sans text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 tracking-[0.35em] select-none relative z-10 drop-shadow-lg"
+                                <div className="font-sans text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 tracking-[0.2em] sm:tracking-[0.35em] select-none relative z-10 drop-shadow-lg"
                                     style={{
                                         textShadow: '0 0 20px rgba(0, 212, 255, 0.5)',
                                         fontFamily: 'monospace',
-                                        letterSpacing: '0.15em'
                                     }}>
                                     {captchaCode}
                                 </div>
