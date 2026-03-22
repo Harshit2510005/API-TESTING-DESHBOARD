@@ -82,7 +82,7 @@ const Login = ({ setToken }) => {
             </div>
 
             <div className="relative z-10 bg-[#1e293b] p-8 rounded-2xl border border-slate-700 shadow-2xl w-full max-w-md text-white">
-                <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00d4ff] to-[#0084d4] mb-2 text-center"></h2>
+                <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#00d4ff] to-[#0084d4] mb-2 text-center">Welcome Back</h2>
                 <p className="text-center text-slate-400 mb-8 text-sm">API Testing Dashboard</p>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
